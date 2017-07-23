@@ -1,10 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateCommentsTable extends Migration
+class RemoveLocationFromUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +12,8 @@ class UpdateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::table('comments', function (Blueprint $table) {
-
-            $table->string('text', 191)->change();
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('location');
         });
     }
 
@@ -27,11 +24,8 @@ class UpdateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::table('comments', function (Blueprint $table) {
-
-            $table->string('text')->change();
-
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('location');
         });
-
     }
 }
