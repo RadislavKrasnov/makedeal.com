@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::unprepared(file_get_contents('/home/radik/projects/makedeal/itprof.sql'));
-        DB::unprepared(file_get_contents('/home/radik/projects/makedeal/techlist.sql'));
+        DB::unprepared(file_get_contents('/home/radik/projects/makedeal/sql/itprof.sql'));
+        DB::unprepared(file_get_contents('/home/radik/projects/makedeal/sql/techlist.sql'));
 
         factory(App\User::class, 50)->create();
         factory(App\Project::class, 50)->create();
