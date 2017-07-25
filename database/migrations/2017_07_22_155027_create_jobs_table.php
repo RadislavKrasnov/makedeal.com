@@ -29,6 +29,11 @@ class CreateJobsTable extends Migration
     public function down()
     {
 //        Schema::dropForeign(['users_id']);
-        Schema::drop('jobs');
+//        Schema::drop('jobs');
+        Schema::table('jobs', function (Blueprint $table) {
+            $table->drop('jobs');
+//            $table->foreign('users_id')->references('id')->on('users');
+
+        });
     }
 }

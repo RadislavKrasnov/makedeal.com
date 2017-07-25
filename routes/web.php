@@ -16,3 +16,4 @@
 //});
 
 Route::get('/', 'UserController@index')->name('developers');
+Route::get('/user/{id}', 'UserController@profile')->name('profile');

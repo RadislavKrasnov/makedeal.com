@@ -13,4 +13,9 @@ class UserController extends Controller
         $users = User::paginate(5);
         return view('developers', compact('users'));
     }
+
+    public function profile()
+    {
+        return view('profile');
+    }
 }

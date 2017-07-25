@@ -25,6 +25,9 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'experience' => $faker->numberBetween($min = 0, $max = 20),
         'remember_token' => str_random(10),
         'jobs_id' => $faker->numberBetween($min = 1, $max = 70),
+        'countries_id' => $faker->numberBetween($min = 1, $max = 70),
+        'regions_id' => $faker->numberBetween($min = 1, $max = 70),
+        'cities_id' => $faker->numberBetween($min = 1, $max = 70),
     ];
 });
 
