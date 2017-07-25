@@ -10,6 +10,7 @@ use App\Company;
 use App\City;
 use App\Region;
 use App\Country;
+use App\Contact;
 use App\Job;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -72,6 +73,12 @@ class User extends Authenticatable
         return $this->belongsTo('App\Job');
     }
 
+    public function contacts()
+    {
+        return $this->hasOne('App\Contact');
+    }
+
+
 
 //retrieve technologies by each user
     public function scopeUserTechnologies($query)
@@ -113,4 +120,10 @@ class User extends Authenticatable
             ->get();
     }
 
+    public function scopeContact()
+    {
+        return $contact = Contact::select('*')
+            ->where('user_id', '=', $this->getAttribute('id'))
+            ->get();
+    }
 }

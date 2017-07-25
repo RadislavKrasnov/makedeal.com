@@ -4,6 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Project;
+use App\Technology;
+use App\Company;
+use App\City;
+use App\Region;
+use App\Country;
+use App\Contact;
+use App\Job;
 use Illuminate\Database\Eloquent\Model;
 
 class UserController extends Controller
@@ -14,8 +22,9 @@ class UserController extends Controller
         return view('developers', compact('users'));
     }
 
-    public function profile()
+    public function profile($id)
     {
-        return view('profile');
+        $user = User::find($id);
+        return view('profile', compact('user'));
     }
 }

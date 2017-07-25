@@ -1,3 +1,4 @@
+/*developers*/
 .developer {
     width: 100%;
     border: 1px solid #ccc;
@@ -83,3 +84,5 @@
         min-width: 250px;
     }
 }
+
+/*end developers*/
