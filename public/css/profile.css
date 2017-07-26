@@ -44,6 +44,19 @@
     padding: 15px 5px;
 }
 
+.techs-skills, .projects {
+    margin: 20px 0 0 0;
+}
+
+form {
+    width: 200px;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    margin: 5px 0 0 0;
+}
+
 @media screen and (max-width: 744px) and (min-width: 601px) {
     .dev-info-profile {
         float: left;

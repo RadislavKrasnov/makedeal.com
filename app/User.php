@@ -126,4 +126,26 @@ class User extends Authenticatable
             ->where('user_id', '=', $this->getAttribute('id'))
             ->get();
     }
+
+    public function scopeNotAddedTechs()
+    {
+        $techArray = DB::table('technology_user')->select('technology_id')
+            ->where('user_id', '=', $this->getAttribute('id'))->get();
+
+        $selected = [];
+
+            foreach ($techArray as $userTech) {
+                $selected[] = $userTech->technology_id;
+            }
+
+        $unselected = Technology::select('id', 'title')->whereNotIn('id', $selected)->get();
+
+        $unselectedTechs = [];
+
+        foreach ($unselected as $tech) {
+            $unselectedTechs[$tech->id] = $tech->title;
+        }
+
+        return $unselectedTechs;
+    }
 }
