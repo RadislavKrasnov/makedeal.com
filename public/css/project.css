@@ -1,0 +1,14 @@
+.form-control {
+    margin: 0 0 10px 0;
+}
+
+.date {
+    width: 300px !important;
+}
+
+.footer {
+
+    position: absolute;
+    bottom: 0;
+
+}

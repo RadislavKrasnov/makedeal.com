@@ -11,6 +11,7 @@ use App\City;
 use App\Region;
 use App\Country;
 use App\Contact;
+use App\Comment;
 use App\Job;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -76,6 +77,11 @@ class User extends Authenticatable
     public function contacts()
     {
         return $this->hasOne('App\Contact');
+    }
+
+    public function comments()
+    {
+        return $this->hasOne('App\Comment', 'user_id' );
     }
 
 

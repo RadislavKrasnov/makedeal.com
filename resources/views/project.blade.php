@@ -6,10 +6,13 @@
 @section('content')
     {!! Form::open(['url' => '/add_project']) !!}
     {!! Form::hidden('user_id', $user->id) !!}
+    {!! Form::label('Title') !!}
     {!! Form::text('title', null, ['class' => 'form-control', 'placeholder'=> 'Title']) !!}
+    {!! Form::label('Description') !!}
     {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => '10'])!!}
-    {!! Form::text('completed', null, ['placeholder' => 'YYYY-MM-DD']) !!}
-    {!! Form::submit('Add') !!}
+    {!! Form::label('Completed') !!}<br>
+    {!! Form::text('completed', null, ['class' => 'form-control date', 'placeholder' => 'YYYY-MM-DD']) !!}
+    {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
     {!! Form::close() !!}
     @if (!empty($result))
         {{ $result }}
