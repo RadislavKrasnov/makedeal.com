@@ -170,6 +170,12 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
 
+        /**
+         * SleepingOwl Service Provider
+         */
+        SleepingOwl\Admin\Providers\SleepingOwlServiceProvider::class,
+
+
         /*
          * Application Service Providers...
          */
