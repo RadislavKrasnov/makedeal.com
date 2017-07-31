@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Reply;
 use Illuminate\Http\Request;
 use App\User;
 use App\Project;
@@ -29,6 +30,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $comments = Comment::where('user_id', '=', $id)->get();
-        return view('profile', compact('user', 'comments'));
+        $replies = Reply::where('page_id', '=', $id)->get();
+        return view('profile', compact('user', 'comments', 'replies'));
     }
 }

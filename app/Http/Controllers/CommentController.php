@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Reply;
 use App\Project;
 use App\Technology;
 use App\Company;
@@ -21,19 +22,28 @@ class CommentController extends Controller
     public function sendComment(Request $request)
     {
 
-        $userId = $request->input('user_id');
-        $title = htmlspecialchars($request->input('comment-title'));
-        $text = htmlspecialchars($request->input('comment-text'));
-
         $comment = new Comment;
 
-        $comment->user_id = $userId;
-        $comment->title = $title;
-        $comment->text = $text;
+        $comment->user_id = $request->input('user_id');
+        $comment->page_id = $request->input('page_id');
+        $comment->text = htmlspecialchars($request->input('comment-text'));
         $comment->save();
 
-        return redirect()->route('profile', [$userId]);
+        return redirect()->route('profile', [$comment->user_id]);
+    }
 
+    public function sendReply(Request $request)
+    {
+        $user = new User;
+        $replies = new Reply;
+        $comment = new Comment;
 
+        $replies->user_id = $request->input('user-reply-id');
+        $replies->comment_id = $request->input('comment_id');
+        $replies->page_id = $request->input('page_id');
+        $replies->text = htmlspecialchars($request->input('comment-text'));
+        $replies->save();
+
+        return redirect()->route('profile', [$replies->user_id]);
     }
 }

@@ -30,8 +30,10 @@ Route::post('/projectDelete', 'ProjectController@projectDelete');
 
 //CommentController
 Route::post('/sendComment', 'CommentController@sendComment')->name('sendComment');
+Route::post('/sendReply', 'CommentController@sendReply')->name('sendReply');
 
 //CompanyController
 Route::post('/companyDelete', 'CompanyController@companyDelete')->name('companyDelete');
 Route::post('/company', 'CompanyController@addCompany');
+
 

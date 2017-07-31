@@ -39,17 +39,23 @@ class DatabaseSeeder extends Seeder
         for ($i = 1; $i <= 50; $i++) {
             DB::table('comments')->insert([
                 'user_id' => $i,
-                'title' => $faker->bs,
+                'page_id' => $faker->numberBetween(1, 50),
+//                'title' => $faker->bs,
                 'text' => $faker->realText($maxNbChars = 191, $indexSize = 2),
+                'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now')
             ]);
         }
 
         for ($i = 1; $i <= 50; $i++) {
             DB::table('replies')->insert([
                 'user_id' => $i,
+                'page_id' => $faker->numberBetween(1, 50),
                 'comment_id' => $faker->numberBetween(1, 50),
-                'title' => $faker->bs,
+//                'title' => $faker->bs,
                 'text' => $faker->realText($maxNbChars = 191, $indexSize = 2),
+                'created_at' => $faker->date($format = 'Y-m-d', $max = 'now'),
+                'updated_at' => $faker->date($format = 'Y-m-d', $max = 'now')
             ]);
         }
 

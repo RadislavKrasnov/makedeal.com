@@ -30,8 +30,18 @@
     width: 100%;
 }
 
-.send-comment textarea {
+.send-comment textarea, .panel-body > .collapse > .well textarea {
     resize: none;
+}
+
+.panel-body > .collapse > .well {
+    background-image: none;
+    -webkit-background-image: none;
+    background-color: #ffffff;
+}
+
+.panel-body > .collapse > .well form {
+    width: 100%;
 }
 
 /* Portrait tablets and medium desktops */
