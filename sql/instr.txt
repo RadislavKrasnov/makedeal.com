@@ -1,9 +1,11 @@
+//Change DB
 1. fk_del
 2. rollback
 3. migrate
 4. fk
 5. seed
 
+//create DB
 1. ins world
 2. migrate
 3. fk

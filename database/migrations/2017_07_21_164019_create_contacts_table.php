@@ -21,7 +21,8 @@ class CreateContactsTable extends Migration
             $table->string('facebook')->unique();
             $table->string('skype')->unique();
             $table->string('google_plus')->unique();
-            $table->string('phone');
+            $table->string('phone')->unique();
+            $table->string('portfolio')->unique();
             $table->timestamps();
         });
     }

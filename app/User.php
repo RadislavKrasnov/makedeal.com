@@ -13,6 +13,7 @@ use App\Country;
 use App\Contact;
 use App\Comment;
 use App\Job;
+use App\Reply;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
@@ -81,8 +82,14 @@ class User extends Authenticatable
 
     public function comments()
     {
-        return $this->hasOne('App\Comment', 'user_id' );
+        return $this->hasMany('App\Comment', 'user_id');
     }
+
+    public function replies()
+    {
+        return $this->hasMany('App\Reply', 'user_id');
+    }
+
 
 
 

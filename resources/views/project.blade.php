@@ -1,9 +1,10 @@
 @extends('index')
 @section('title', 'New project')
 @section('profile-css')
-    <link rel="stylesheet" href="{{ asset('css/project.css') }}">
+<link rel="stylesheet" href="{{ asset('css/project.css') }}">
 @endsection
 @section('content')
+    <a href="{{ route('profile', [$user->id]) }}" class="btn btn-primary back">Back</a>
     {!! Form::open(['url' => '/add_project']) !!}
     {!! Form::hidden('user_id', $user->id) !!}
     {!! Form::label('Title') !!}

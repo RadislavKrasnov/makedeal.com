@@ -25,6 +25,15 @@
     /*For wrapping text in thumbnail*/
     word-wrap: break-word;
 }
+
+.send-comment form {
+    width: 100%;
+}
+
+.send-comment textarea {
+    resize: none;
+}
+
 /* Portrait tablets and medium desktops */
 @media (min-width: 768px) {
     .comment-list .arrow:after, .comment-list .arrow:before {
@@ -75,4 +84,19 @@
 }
 .comment-list .comment-post {
     margin-top: 6px;
+}
+
+.send-comment {
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin: 0 0 20px 0;
+    border-radius: 5px;
+}
+
+.send-comment input, .send-comment textarea {
+    margin: 0 0 5px 0;
+}
+
+.send-comment input[type='submit'] {
+    width: 100px;
 }

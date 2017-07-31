@@ -45,6 +45,17 @@ class DatabaseSeeder extends Seeder
         }
 
         for ($i = 1; $i <= 50; $i++) {
+            DB::table('replies')->insert([
+                'user_id' => $i,
+                'comment_id' => $faker->numberBetween(1, 50),
+                'title' => $faker->bs,
+                'text' => $faker->realText($maxNbChars = 191, $indexSize = 2),
+            ]);
+        }
+
+
+
+        for ($i = 1; $i <= 50; $i++) {
             DB::table('project_user')->insert([
                 'project_id' => $faker->numberBetween(1, 50),
                 'user_id' => $i

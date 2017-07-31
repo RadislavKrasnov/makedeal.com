@@ -15,10 +15,23 @@
 //    return view('welcome');
 //});
 
+//UserController
 Route::get('/', 'UserController@index')->name('developers');
 Route::get('/user/{id}', 'UserController@profile')->name('profile');
-Route::post('/removeTech', 'UserController@removeTechnology')->name('removeTech');
-Route::post('/addTech', 'UserController@addTechnology')->name('addTech');
-Route::get('/project', 'UserController@projectForm');
-Route::post('/add_project', 'UserController@addProject');
-Route::post('/projectDelete', 'UserController@projectDelete');
+
+//TechnologyController
+Route::post('/removeTech', 'TechnologyController@removeTechnology')->name('removeTech');
+Route::post('/addTech', 'TechnologyController@addTechnology')->name('addTech');
+
+//ProjectController
+Route::get('/project', 'ProjectController@projectForm');
+Route::post('/add_project', 'ProjectController@addProject');
+Route::post('/projectDelete', 'ProjectController@projectDelete');
+
+//CommentController
+Route::post('/sendComment', 'CommentController@sendComment')->name('sendComment');
+
+//CompanyController
+Route::post('/companyDelete', 'CompanyController@companyDelete')->name('companyDelete');
+Route::post('/company', 'CompanyController@addCompany');
+

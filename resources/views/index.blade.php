@@ -8,8 +8,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
     {{--<link rel="icon" href="../../favicon.ico">--}}
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    @yield('profile-css')
 
     <title>@yield('title')</title>
 
@@ -26,6 +24,10 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/jumbotron-narrow.css') }}" rel="stylesheet">
 
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    @yield('profile-css')
+    @yield('links')
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="{{ asset('js/ie-emulation-modes-warning.js') }}"></script>
@@ -35,7 +37,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    @yield('links')
 </head>
 
 <body>

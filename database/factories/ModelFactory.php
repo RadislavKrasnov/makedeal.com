@@ -82,9 +82,21 @@ $factory->define(App\Contact::class, function (Faker\Generator $faker) {
         'facebook' => $faker->unique()->url,
         'skype' => $faker->unique()->userName,
         'google_plus' => $faker->unique()->url,
-        'phone' => $faker->phoneNumber,
+        'phone' => $faker->unique()->phoneNumber,
+        'portfolio' => $faker->unique()->url,
     ];
 });
+
+//$factory->define(App\Reply::class, function (Faker\Generator $faker) {
+//
+//
+//    return [
+//        'user_id' => $faker->unique()->numberBetween($min = 1, $max = 50),
+//        'comment_id' => $faker->unique()->numberBetween($min = 1, $max = 50),
+//        'title' => $faker->catchPhrase,
+//        'text' => $faker->text,
+//    ];
+//});
 
 //$factory->define(App\Photo::class, function (Faker\Generator $faker) {
 //
