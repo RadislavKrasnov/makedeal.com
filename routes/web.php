@@ -37,3 +37,7 @@ Route::post('/companyDelete', 'CompanyController@companyDelete')->name('companyD
 Route::post('/company', 'CompanyController@addCompany');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -17,6 +17,11 @@ use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function projectForm(Request $request)
     {
         $user = User::find($request->input('user_id'));

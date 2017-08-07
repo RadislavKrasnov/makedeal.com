@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
+    protected $redirectTo = '';
 
     /**
      * Create a new controller instance.
@@ -35,5 +38,28 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+//my code
+    public function login(Request $request)
+    {
+        $this->validate($request, [
+            'username' => 'required|string|max:191|',
+            'password' => 'required|string|min:6',
+        ]);
+
+        if (Auth::attempt(['username' => $request->username, 'password' => $request->password], $request->remember)) {
+            // Authentication passed...
+            $id = Auth::id();
+            return redirect()->intended("/user/$id");
+        }
+
+        return back()->withInput($request->only('username', 'password'));
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        return redirect('/login');
     }
 }

@@ -27,7 +27,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+//    protected $redirectTo = '/home';
+    protected $redirectTo = '/user/{id}';
 
     /**
      * Create a new controller instance.
@@ -45,12 +46,28 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    /*protected function validator(array $data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+        ]);
+    }*/
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'first_name' => 'required|string|max:191',
+            'last_name' => 'required|string|max:191',
+            'username' => 'required|string|max:191|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'age' => 'numeric',
+            'experience' => 'numeric',
+            'jobs_id' => 'numeric',
+            'countries_id' => 'numeric',
+            'regions_id' => 'numeric',
+            'cities_id' => 'numeric'
         ]);
     }
 
@@ -62,10 +79,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+        ]);*/
+
+        return User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
+            'username' => $data['username'],
+            'password' => bcrypt($data['password']),
+            'age' => $data['age'],
+            'experience' => $data['experience'],
+            'jobs_id' => intval($data['jobs_id']),
+            'countries_id' => intval($data['countries_id']),
+            'regions_id' => intval($data['regions_id']),
+            'cities_id' => intval($data['cities_id'])
         ]);
     }
 }

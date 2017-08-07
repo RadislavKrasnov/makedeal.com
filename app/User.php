@@ -16,6 +16,7 @@ use App\Job;
 use App\Reply;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use App\Session;
 
 
 class User extends Authenticatable
@@ -28,7 +29,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'first_name', 'last_name', 'username', 'password', 'age', 'experience', 'jobs_id',
+        'countries_id', 'regions_id', 'cities_id'
     ];
 
     /**
@@ -90,7 +92,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Reply', 'user_id');
     }
 
-
+    public function session()
+    {
+        return $this->hasOne('App\Session');
+    }
 
 
 //retrieve technologies by each user

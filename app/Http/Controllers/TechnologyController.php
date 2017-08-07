@@ -17,6 +17,17 @@ use Illuminate\Support\Facades\DB;
 
 class TechnologyController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function removeTechnology(Request $request)
     {
         $userId = $request->input('user_id');

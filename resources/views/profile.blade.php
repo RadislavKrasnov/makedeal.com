@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="{{ asset('css/comments.css') }}">
     @endsection
 @section('content')
-
     <div class="row marketing">
         <div class=".col-xs-12 .col-sm-12 .col-md-12 col-lg-12">
             <a href="{{ route('developers') }}" class="btn btn-primary back">Back</a>
@@ -55,12 +54,15 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
+                            @if ($user->id == $session)
                             <th>Remove</th>
+                            @endif
                         </tr>
                         @foreach($user->technologies as $technology)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $technology->title }}</td>
+                            @if ($user->id == $session)
                             <td>
                                 {!! Form::open(['url' => 'removeTech']) !!}
                                     {!! Form::hidden('user_id', $user->id) !!}
@@ -68,15 +70,18 @@
                                     {!! Form::submit('Remove', ['class' => 'btn btn-danger']) !!}
                                 {!! Form::close() !!}
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </table>
+                    @if ($user->id == $session)
                     {!! Form::open(['url' => 'addTech']) !!}
                     {!! Form::hidden('user_id', $user->id) !!}
                     {!! Form::select('techIds', $user->notAddedTechs(),
                     ['class' => 'form-control'], ['class' => 'form-control']) !!}
                     {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
                     {!! Form::close() !!}
+                    @endif
                 </div>
             </div>
             <div class="companies">
@@ -86,13 +91,16 @@
                             <th>#</th>
                             <th>Title</th>
                             <th>Location</th>
+                            @if ($user->id == $session)
                             <th>Remove</th>
+                            @endif
                         </tr>
                         @foreach($user->companies as $company)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $company->title }}</td>
                                 <td>{{ $company->location }}</td>
+                                @if ($user->id == $session)
                                 <td>
                                     {!! Form::open(['url' => 'companyDelete', 'method' => 'post']) !!}
                                     {!! Form::hidden('user_id', $user->id) !!}
@@ -100,10 +108,13 @@
                                     {!! Form::submit('Remove', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </table>
-                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCompany" aria-expanded="false" aria-controls="collapseExample">
+                    @if ($user->id == $session)
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCompany"
+                            aria-expanded="false" aria-controls="collapseExample">
                         Add company
                     </button>
                     <div class="collapse" id="collapseCompany">
@@ -118,6 +129,7 @@
                             {!! Form::close() !!}
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
             <div class="projects">
@@ -128,7 +140,9 @@
                             <th>Title</th>
                             <th>Descroption</th>
                             <th>Completed</th>
+                            @if ($user->id == $session)
                             <th>Remove</th>
+                            @endif
                         </tr>
                         @foreach($user->projects as $project)
                             <tr>
@@ -136,6 +150,7 @@
                                 <td>{{ $project->title }}</td>
                                 <td>{{ $project->description }}</td>
                                 <td>{{ $project->completed }}</td>
+                                @if ($user->id == $session)
                                 <td>
                                     {!! Form::open(['url' => '/projectDelete', 'method' => 'post']) !!}
                                     {!! Form::hidden('user_id', $user->id) !!}
@@ -143,19 +158,20 @@
                                     {!! Form::submit('Remove', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 </td>
+                                @endif
                             </tr>
                         @endforeach
                     </table>
+                    @if ($user->id == $session)
                     {!! Form::open(['url' => '/project', 'method' => 'GET']) !!}
                     {!! Form::hidden('user_id', $user->id) !!}
                     {!! Form::submit('Add project', ['class' => 'btn btn-primary']) !!}
                     {!! Form::close() !!}
+                    @endif
                 </div>
             </div>
         </div>
     </div>
     {{--comments--}}
 @include('comments')
-
-
 @endsection

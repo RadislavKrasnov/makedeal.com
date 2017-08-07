@@ -19,6 +19,16 @@ use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function sendComment(Request $request)
     {
 
@@ -29,7 +39,7 @@ class CommentController extends Controller
         $comment->text = htmlspecialchars($request->input('comment-text'));
         $comment->save();
 
-        return redirect()->route('profile', [$comment->user_id]);
+        return redirect()->route('profile', [$comment->page_id]);
     }
 
     public function sendReply(Request $request)
@@ -44,6 +54,6 @@ class CommentController extends Controller
         $replies->text = htmlspecialchars($request->input('comment-text'));
         $replies->save();
 
-        return redirect()->route('profile', [$replies->user_id]);
+        return redirect()->route('profile', [$replies->page_id]);
     }
 }

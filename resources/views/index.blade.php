@@ -44,6 +44,34 @@
     <div class="header clearfix">
         <nav>
             <ul class="nav nav-pills pull-right">
+                <!-- Authentication Links -->
+                @if (Auth::guest())
+                    <li><a href="{{ route('login') }}">Login</a></li>
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                            <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+            <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="active"><a href="#">Home</a></li>
                 <li role="presentation"><a href="#">About</a></li>
                 <li role="presentation"><a href="#">Contact</a></li>
