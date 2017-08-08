@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.index')
 @section('title', 'profile')
     @section('profile-css')
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}">

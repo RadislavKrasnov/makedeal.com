@@ -1,4 +1,5 @@
 /*developers*/
+
 .developer {
     width: 100%;
     border: 1px solid #ccc;
@@ -43,6 +44,16 @@
     margin-left: 19% !important;
 }
 
+.panel-heading {
+    background-image: none !important;
+    -webkit-background-image: none !important;
+    -o-background-image: none !important;
+    background-color: transparent !important;
+    background-color: #337ab7 !important;
+    color: #FFFFFF !important;
+    border-color: #337ab7 !important;
+}
+
 @media screen and (max-width: 744px) and (min-width: 601px) {
     .dev-info {
         float: left;
@@ -54,6 +65,7 @@
         margin: 0;
         padding: 15px 5px;
     }
+
 }
 
 @media screen and (max-width: 600px) and (min-width: 380px){
@@ -73,6 +85,7 @@
         margin: 0;
         padding: 15px 5px;
     }
+
 }
 
 @media screen and (max-width: 380px) {
@@ -83,6 +96,7 @@
     .developer {
         min-width: 250px;
     }
+
 }
 
 /*end developers*/
