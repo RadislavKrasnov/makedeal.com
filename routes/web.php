@@ -36,6 +36,9 @@ Route::post('/sendReply', 'CommentController@sendReply')->name('sendReply');
 Route::post('/companyDelete', 'CompanyController@companyDelete')->name('companyDelete');
 Route::post('/company', 'CompanyController@addCompany');
 
+//ContactController
+Route::post('/add_contact', 'ContactController@addContact');
+
 
 
 Auth::routes();

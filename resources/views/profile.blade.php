@@ -32,6 +32,7 @@
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Contacts
                     </button>
+                    @if($user->id != $session)
                     <div class="collapse" id="collapseExample">
                         <div class="well">
                             @foreach($user->contact() as $contact)
@@ -45,11 +46,44 @@
                             @endforeach
                         </div>
                     </div>
-
+                    @else
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            @foreach($user->contact() as $contact)
+                                {!! Form::open(['url' => '/add_contact']) !!}
+                                    {!! Form::hidden('user_id', $user->id) !!}
+                                    {!! Form::label('Email') !!}
+                                    {!! Form::text('email', $contact->email ?: null,
+                                    ['class' => 'form-control', 'id' => 'email']) !!}
+                                    {!! Form::label('GitHub') !!}
+                                    {!! Form::text('github', $contact->github ?: null,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::label('Skype') !!}
+                                    {!! Form::text('skype', $contact->skype ?: null,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::label('Google+') !!}
+                                    {!! Form::text('google-plus', $contact->google_plus ?: null,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::label('Facebook') !!}
+                                    {!! Form::text('facebook', $contact->facebook ?: null,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::label('Phone') !!}
+                                    {!! Form::text('phone',  $contact->phone ?: null,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::label('Portfolio') !!}
+                                    {!! Form::text('portfolio',  $contact->portfolio ?: null,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
+                                {!! Form::close() !!}
+                            @endforeach
+                        </div>
+                    </div>
+                    @endif
                 </div>
             </div>
             <div class="techs-skills">
                 <div class="table-responsive">
+                @if(count($user->technologies) > 0)
                     <table class="table">
                         <tr>
                             <th>#</th>
@@ -74,6 +108,10 @@
                         </tr>
                         @endforeach
                     </table>
+                @else
+                <div class="empty-table"><span>You don't have any record now</span></div>
+                @endif
+
                     @if ($user->id == $session)
                     {!! Form::open(['url' => 'addTech']) !!}
                     {!! Form::hidden('user_id', $user->id) !!}
@@ -86,6 +124,7 @@
             </div>
             <div class="companies">
                 <div class="table-responsive">
+                @if(count($user->companies) > 0)
                     <table class="table">
                         <tr>
                             <th>#</th>
@@ -112,6 +151,9 @@
                             </tr>
                         @endforeach
                     </table>
+                @else
+                    <div class="empty-table"><span>You don't have any record now</span></div>
+                @endif
                     @if ($user->id == $session)
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseCompany"
                             aria-expanded="false" aria-controls="collapseExample">
@@ -134,6 +176,7 @@
             </div>
             <div class="projects">
                 <div class="table-responsive">
+                @if(count($user->projects) > 0)
                     <table class="table">
                         <tr>
                             <th>#</th>
@@ -162,6 +205,9 @@
                             </tr>
                         @endforeach
                     </table>
+                @else
+                    <div class="empty-table"><span>You don't have any record now</span></div>
+                @endif
                     @if ($user->id == $session)
                     {!! Form::open(['url' => '/project', 'method' => 'GET']) !!}
                     {!! Form::hidden('user_id', $user->id) !!}

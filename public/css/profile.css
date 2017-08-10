@@ -67,6 +67,23 @@ input[type="submit"] {
     width: 100%;
 }
 
+#collapseExample > .well > form {
+    width: 100%;
+}
+
+.empty-table {
+    display: block;
+    padding-top: 40px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background-color: #CCCCCC;
+}
+
+.empty-table span {
+    color: #969696;
+}
+
 @media screen and (max-width: 744px) and (min-width: 601px) {
     .dev-info-profile {
         float: left;
