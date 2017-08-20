@@ -18,6 +18,7 @@
                     <div class="header-developer-profile">
                         <h4>{{ $user->first_name }} {{ $user->last_name }}</h4>
                     </div>
+                    @if($user->id != $session)
                     <div class="info-list">
                         @foreach($user->specialization() as $specialization)
                         <p>Scpecialization: {{ $specialization->title }}</p>
@@ -35,47 +36,50 @@
                     @if($user->id != $session)
                     <div class="collapse" id="collapseExample">
                         <div class="well">
-                            @foreach($user->contact() as $contact)
-                            <p>Email: {{ $contact->email }}</p>
-                            <p>GitHub: {{ $contact->github }}</p>
-                            <p>Skype: {{ $contact->skype }}</p>
-                            <p>Google+: {{ $contact->google_plus }}</p>
-                            <p>Facebook: {{ $contact->facebook }}</p>
-                            <p>Phone: {{ $contact->phone }}</p>
-                            <p>Portfolio: {{ $contact->portfolio }}</p>
-                            @endforeach
+                            <p>Email: {{ $user->email }}</p>
+                            <p>GitHub: {{ $user->github }}</p>
+                            <p>Skype: {{ $user->skype }}</p>
+                            <p>Google+: {{ $user->google_plus }}</p>
+                            <p>Facebook: {{ $user->facebook }}</p>
+                            <p>Phone: {{ $user->phone }}</p>
+                            <p>Portfolio: {{ $user->portfolio }}</p>
                         </div>
                     </div>
                     @else
                     <div class="collapse" id="collapseExample">
                         <div class="well">
-                            @foreach($user->contact() as $contact)
-                                {!! Form::open(['url' => '/add_contact']) !!}
+                                {!! Form::open(['url' => '/add_email']) !!}
+                                    {!! Form::token() !!}
                                     {!! Form::hidden('user_id', $user->id) !!}
                                     {!! Form::label('Email') !!}
-                                    {!! Form::text('email', $contact->email ?: null,
+                                    {!! Form::text('email', !empty($user->email) ? $user->email : null,
                                     ['class' => 'form-control', 'id' => 'email']) !!}
+                                    {!! Form::submit('Edit', ['class' => 'btn btn-primary'])  !!}
+                                {!! Form::close() !!}
+                                {!! Form::open(['url' => '/add_contacts']) !!}
+                                    {!! Form::token() !!}
+                                    {!! Form::hidden('user_id', $user->id) !!}
                                     {!! Form::label('GitHub') !!}
-                                    {!! Form::text('github', $contact->github ?: null,
+                                    {!! Form::text('github', !empty($user->contact->github) ? $user->contact->github : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::label('Skype') !!}
-                                    {!! Form::text('skype', $contact->skype ?: null,
+                                    {!! Form::text('skype', !empty($user->contact->skype) ? $user->contact->skype : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::label('Google+') !!}
-                                    {!! Form::text('google-plus', $contact->google_plus ?: null,
+                                    {!! Form::text('google_plus', !empty($user->contact->google_plus) ? $user->contact->google_plus : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::label('Facebook') !!}
-                                    {!! Form::text('facebook', $contact->facebook ?: null,
+                                    {!! Form::text('facebook', !empty($user->contact->facebook) ? $user->contact->facebook : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::label('Phone') !!}
-                                    {!! Form::text('phone',  $contact->phone ?: null,
+                                    {!! Form::text('phone',  !empty($user->contact->phone) ? $user->contact->phone : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::label('Portfolio') !!}
-                                    {!! Form::text('portfolio',  $contact->portfolio ?: null,
+                                    {!! Form::text('portfolio',  !empty($user->contact->portfolio) ? $user->contact->portfolio : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
+                                    <button type="reset" class = 'btn btn-danger' value="Reset">Reset</button>
                                 {!! Form::close() !!}
-                            @endforeach
                         </div>
                     </div>
                     @endif

@@ -30,7 +30,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'first_name', 'last_name', 'username', 'password', 'age', 'experience', 'jobs_id',
-        'countries_id', 'regions_id', 'cities_id'
+        'countries_id', 'regions_id', 'cities_id', 'email'
     ];
 
     /**
@@ -77,7 +77,7 @@ class User extends Authenticatable
         return $this->belongsTo('App\Job');
     }
 
-    public function contacts()
+    public function contact()
     {
         return $this->hasOne('App\Contact');
     }

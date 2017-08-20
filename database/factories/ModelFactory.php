@@ -19,7 +19,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
         'username' => $faker->unique()->userName,
-//        'email' => $faker->unique()->safeEmail,
+        'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'age' => $faker->numberBetween($min = 18, $max = 65),
         'experience' => $faker->numberBetween($min = 0, $max = 20),
@@ -77,7 +77,6 @@ $factory->define(App\Contact::class, function (Faker\Generator $faker) {
 
     return [
         'user_id' => $faker->unique()->numberBetween($min = 1, $max = 50),
-        'email' => $faker->unique()->safeEmail,
         'github' => $faker->unique()->url,
         'facebook' => $faker->unique()->url,
         'skype' => $faker->unique()->userName,

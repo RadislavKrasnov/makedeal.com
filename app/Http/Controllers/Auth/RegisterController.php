@@ -72,7 +72,8 @@ class RegisterController extends Controller
             'jobs_id' => 'numeric',
             'countries_id' => 'numeric',
             'regions_id' => 'numeric',
-            'cities_id' => 'numeric'
+            'cities_id' => 'numeric',
+            'email' => 'required|string|email|max:191|unique:users',
         ]);
     }
 
@@ -100,7 +101,8 @@ class RegisterController extends Controller
             'jobs_id' => intval($data['jobs_id']),
             'countries_id' => intval($data['countries_id']),
             'regions_id' => intval($data['regions_id']),
-            'cities_id' => intval($data['cities_id'])
+            'cities_id' => intval($data['cities_id']),
+            'email' => $data['email'],
         ]);
     }
 

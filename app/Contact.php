@@ -7,8 +7,15 @@ use App\User;
 
 class Contact extends Model
 {
-    public function users()
+    protected $table = 'contacts';
+
+
+    protected $fillable = [
+        'user_id', 'github', 'facebook', 'skype', 'google_plus', 'phone', 'portfolio',
+    ];
+
+    public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsTo('App\User');
     }
 }

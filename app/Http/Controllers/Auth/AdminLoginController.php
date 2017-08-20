@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class AdminLoginController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -37,29 +37,35 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:admin')->except(['logout']);
     }
 //my code
+
+    public function showLoginForm()
+    {
+        return view('auth.admin-login');
+    }
+
     public function login(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|string|max:191',
+            'email' => 'required|email|max:191',
             'password' => 'required|string|min:6',
         ]);
 
-        if (Auth::attempt(['username' => $request->username, 'password' => $request->password], $request->remember)) {
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember)) {
 //             Authentication passed...
-            $id = Auth::id();
-            return redirect()->intended("/user/$id");
+            $id = Auth::guard('admin')->id();
+            return redirect()->intended(route('admin.dashboard'));
         }
 
-        return back()->withInput($request->only('username', 'password'));
+        return back()->withInput($request->only('email', 'password'));
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        Auth::logout();
+        Auth::guard('admin')->logout();
 
-        return redirect('/login');
+        return redirect('/admin/login');
     }
 }
