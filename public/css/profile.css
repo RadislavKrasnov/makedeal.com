@@ -53,7 +53,7 @@ form {
     margin-top: 10px;
 }
 
-input[type="submit"], button[type="reset"] {
+input[type="submit"] {
     margin: 5px 0 0 0;
 }
 

@@ -30,6 +30,27 @@
                         @endif
                         <p>Age: {{ $user->age }}</p>
                     </div>
+                    @else
+                        <div class="info-list">
+
+                            <p>Scpecialization:</p>
+                            {!! Form::open(['url' => '#']) !!}
+                            {!! Form::select('specialization', $user->jobs->scopeSpecializationsArray(), $user->jobs_id) !!}
+                            {!! Form::close() !!}
+
+
+                            @if ($user->experience !== 0)
+                                <p>expereince:</p>
+                                {!! Form::open(['url' => '#']) !!}
+                                {!! Form::text('experience') !!}
+                                {!! Form::close() !!}
+                                <p>years</p>
+                            @else
+                                <p>expereince: less 1 years</p>
+                            @endif
+                            <p>Age: {{ $user->age }}</p>
+                        </div>
+                    @endif
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         Contacts
                     </button>
@@ -78,7 +99,6 @@
                                     {!! Form::text('portfolio',  !empty($user->contact->portfolio) ? $user->contact->portfolio : null,
                                     ['class' => 'form-control']) !!}
                                     {!! Form::submit('Edit', ['class' => 'btn btn-primary']) !!}
-                                    <button type="reset" class = 'btn btn-danger' value="Reset">Reset</button>
                                 {!! Form::close() !!}
                         </div>
                     </div>

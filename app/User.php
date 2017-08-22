@@ -116,7 +116,8 @@ class User extends Authenticatable
 
     public function scopeSpecialization($query)
     {
-        return $job = Job::select('title')->where('id', '=', $this->getAttribute('jobs_id'))
+        return $job = Job::select('id', 'title')
+            ->where('id', '=', $this->getAttribute('jobs_id'))
             ->get();
     }
 
