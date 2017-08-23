@@ -35,27 +35,6 @@ class ContactController extends Controller
             'portfolio' => 'nullable|unique:contacts|url',
         ]);
 
-//        $contact = Contact::where('user_id', '=', $request->input('user_id'))->first();
-//        if($contact != null) {
-//            $contact->github = 'New Flight Name';
-//            $contact->facebook = 'New Flight Name';
-//            $contact->skype = 'sdfdfdfg';
-//            $contact->google_plus = 'New Flight Name';
-//            $contact->phone = 'New Flight Name';
-//            $contact->portfolio = 'New Flight Name';
-//            $contact->save();
-//        } else {
-//            $newContact = new Contact;
-//            $newContact->user_id = $request->input('user_id');
-//            $newContact->github = htmlspecialchars($request->input('github'));
-//            $newContact->facebook = htmlspecialchars($request->input('facebook'));
-//            $newContact->skype = htmlspecialchars($request->input('skype'));
-//            $newContact->google_plus = htmlspecialchars($request->input('google_plus'));
-//            $newContact->phone = htmlspecialchars($request->input('phone'));
-//            $newContact->portfolio = htmlspecialchars($request->input('portfolio'));
-//            $newContact->save();
-//        }
-
         Contact::updateOrCreate(
             ['user_id' => $request->input('user_id')],
             [

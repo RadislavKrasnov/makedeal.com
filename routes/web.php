@@ -18,6 +18,7 @@
 //UserController
 Route::get('/', 'UserController@index')->name('developers');
 Route::get('/user/{id}', 'UserController@profile')->name('profile');
+Route::put('/user-info', 'UserController@updateInfo');
 
 //TechnologyController
 Route::post('/removeTech', 'TechnologyController@removeTechnology')->name('removeTech');

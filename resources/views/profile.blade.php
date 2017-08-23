@@ -11,7 +11,7 @@
             <div class="developer-profile clearfix">
                 <div class="avatar-profile">
                     <a href="https://placeholder.com">
-                        <img src="http://via.placeholder.com/250x350">
+                        <img src="http://via.placeholder.com/250x250">
                     </a>
                 </div>
                 <div class="dev-info-profile">
@@ -28,27 +28,39 @@
                         @else
                             <p>expereince: less 1 years</p>
                         @endif
-                        <p>Age: {{ $user->age }}</p>
+                        <p>Age: {{ $user->birthday }}</p>
                     </div>
                     @else
                         <div class="info-list">
-
-                            <p>Scpecialization:</p>
-                            {!! Form::open(['url' => '#']) !!}
-                            {!! Form::select('specialization', $user->jobs->scopeSpecializationsArray(), $user->jobs_id) !!}
-                            {!! Form::close() !!}
-
-
+                            @foreach($user->specialization() as $specialization)
+                                <p>Scpecialization: {{ $specialization->title }}</p>
+                            @endforeach
                             @if ($user->experience !== 0)
-                                <p>expereince:</p>
-                                {!! Form::open(['url' => '#']) !!}
-                                {!! Form::text('experience') !!}
-                                {!! Form::close() !!}
-                                <p>years</p>
+                                <p>expereince: {{ $user->experience }} year(s)</p>
                             @else
-                                <p>expereince: less 1 years</p>
+                                <p>expereince: less 1 year</p>
                             @endif
-                            <p>Age: {{ $user->age }}</p>
+                            <p>Age: {{ $user->birthday }}</p>
+                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#editInfo" aria-expanded="false" aria-controls="collapseExample">
+                                Edit
+                            </button>
+                            <div class="collapse" id="editInfo">
+                                <div class="well">
+                                    {!! Form::open(['url' => '/user-info', 'method' => 'PUT']) !!}
+                                    {!! Form::hidden('user_id', $user->id) !!}
+                                    {!! Form::label('Specialization') !!}
+                                    {!! Form::select('specialization', $user->jobs->scopeSpecializationsArray(), $user->jobs_id,
+                                    ['class' => 'form-control']) !!}
+                                    {!! Form::label('Start career') !!}
+                                    {!! Form::text('experience', null, ['class' => 'form-control',
+                                    'placeholder' => 'mm/dd/YYYY']) !!}
+                                    {!! Form::label('Date of birth') !!}
+                                    {!! Form::text('birthday', null, ['class' => 'form-control',
+                                    'placeholder' => 'mm/dd/YYYY']) !!}
+                                    {!! Form::submit('Save', ['class' => 'btn btn-primary'])  !!}
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
                         </div>
                     @endif
                     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">

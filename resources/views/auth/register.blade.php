@@ -106,18 +106,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="age" class="col-md-4 control-label">Age</label>
+                            <label for="birthday" class="col-md-4 control-label">Date of Birth</label>
 
                             <div class="col-md-6">
-                                <input id="age" type="text" class="form-control" name="age">
+                                <input id="birthday" type="text" class="form-control" name="birthday"
+                                       placeholder="mm/dd/YYYY">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="experience" class="col-md-4 control-label">Experience</label>
+                            <label for="experience" class="col-md-4 control-label">Start career</label>
 
                             <div class="col-md-6">
-                                <input id="experience" type="text" class="form-control" name="experience">
+                                <input id="experience" type="text" class="form-control" name="experience"
+                                       placeholder="mm/dd/YYYY">
                             </div>
                         </div>
 

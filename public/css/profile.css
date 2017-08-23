@@ -32,6 +32,10 @@
     font-size: 15px;
 }
 
+.info-list p {
+    font-weight: bold;
+}
+
 .header-developer-profile {
     display: block;
     box-sizing: border-box;
@@ -42,6 +46,7 @@
     display: inline-block;
     margin: 0;
     padding: 15px 5px;
+    font-weight: bold;
 }
 
 .techs-skills, .projects {
