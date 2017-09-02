@@ -4,12 +4,15 @@
         <div class="col-md-12">
             <h2 class="page-header">Comments</h2>
             <section class="send-comment">
-                {!! Form::open(['url' => 'sendComment']) !!}
-                {!! Form::hidden('user_id', $session) !!}
-                {!! Form::hidden('page_id', $user->id) !!}
-                {!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '5']) !!}
-                {!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}
-                {!! Form::close(['url' => '#']) !!}
+                {{--{!! Form::open(['url' => 'sendComment']) !!}--}}
+                {{--{!! Form::hidden('user_id', $session) !!}--}}
+                {{--{!! Form::hidden('page_id', $user->id) !!}--}}
+                {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '5']) !!}--}}
+                {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
+                {{--{!! Form::close(['url' => '#']) !!}--}}
+@foreach($formComment as $form)
+                {!! $form !!}
+@endforeach
             </section>
 
         @if ($comments->count())
@@ -46,13 +49,16 @@
                                 </p>
                                 <div class="collapse" id="collapseMyComment{{ $loop->index }}">
                                     <div class="well">
-                                        {!! Form::open(['url' => 'sendReply']) !!}
-                                        {!! Form::hidden('user-reply-id', $session) !!}
-                                        {!! Form::hidden('comment_id', $comment->id) !!}
-                                        {!! Form::hidden('page_id', $user->id) !!}
-                                        {!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}
-                                        {!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}
-                                        {!! Form::close(['url' => '#']) !!}
+                                        {{--{!! Form::open(['url' => 'sendReply']) !!}--}}
+                                        {{--{!! Form::hidden('user-reply-id', $session) !!}--}}
+                                        {{--{!! Form::hidden('comment_id', $comment->id) !!}--}}
+                                        {{--{!! Form::hidden('page_id', $user->id) !!}--}}
+                                        {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}--}}
+                                        {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
+                                        {{--{!! Form::close(['url' => '#']) !!}--}}
+                                        @foreach($formReply as $form)
+                                            {!! $form !!}
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -85,13 +91,16 @@
                                     </p>
                                     <div class="collapse" id="collapseReplyThird{{ $loop->index }}">
                                         <div class="well">
-                                            {!! Form::open(['url' => 'sendReply']) !!}
-                                            {!! Form::hidden('user-reply-id', $session) !!}
-                                            {!! Form::hidden('comment_id', $comment->id) !!}
-                                            {!! Form::hidden('page_id', $user->id) !!}
-                                            {!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}
-                                            {!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}
-                                            {!! Form::close(['url' => '#']) !!}
+                                            {{--{!! Form::open(['url' => 'sendReply']) !!}--}}
+                                            {{--{!! Form::hidden('user-reply-id', $session) !!}--}}
+                                            {{--{!! Form::hidden('comment_id', $comment->id) !!}--}}
+                                            {{--{!! Form::hidden('page_id', $user->id) !!}--}}
+                                            {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}--}}
+                                            {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
+                                            {{--{!! Form::close(['url' => '#']) !!}--}}
+                                            @foreach($formReply as $form)
+                                                {!! $form !!}
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -143,13 +152,16 @@
                                 </p>
                                 <div class="collapse" id="collapseReply{{ $loop->index }}">
                                     <div class="well">
-                                        {!! Form::open(['url' => 'sendReply']) !!}
-                                        {!! Form::hidden('user-reply-id', $session) !!}
-                                        {!! Form::hidden('comment_id', $reply->comments->id) !!}
-                                        {!! Form::hidden('page_id', $user->id) !!}
-                                        {!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}
-                                        {!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}
-                                        {!! Form::close() !!}
+                                        {{--{!! Form::open(['url' => 'sendReply']) !!}--}}
+                                        {{--{!! Form::hidden('user-reply-id', $session) !!}--}}
+                                        {{--{!! Form::hidden('comment_id', $reply->comments->id) !!}--}}
+                                        {{--{!! Form::hidden('page_id', $user->id) !!}--}}
+                                        {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}--}}
+                                        {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
+                                        {{--{!! Form::close() !!}--}}
+                                        @foreach($formReply as $form)
+                                            {!! $form !!}
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>

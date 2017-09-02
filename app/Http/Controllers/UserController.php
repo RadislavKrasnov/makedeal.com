@@ -19,6 +19,7 @@ use App\Comment;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+use Form;
 
 
 class UserController extends Controller
@@ -50,8 +51,6 @@ class UserController extends Controller
 
     public function profile($id)
     {
-
-
         session(['user_id' => Auth::id()]);
         $session = session('user_id');
         $user = User::find($id);
@@ -59,7 +58,30 @@ class UserController extends Controller
         $user->experience = $this->calculate_term($user->experience);
         $comments = Comment::where('page_id', '=', $id)->get();
         $replies = Reply::where('page_id', '=', $id)->get();
-        return view('profile', compact('user', 'comments', 'replies', 'session'));
+
+        $formComment = [
+                Form::open(['url' => 'sendComment']),
+                Form::hidden('user_id', $session),
+                Form::hidden('page_id', $user->id),
+                Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '5']),
+                Form::submit('Send', ['class' => 'btn btn-primary']),
+                Form::close(),
+        ];
+
+        foreach ($comments as $comment) {
+            $formReply = [
+                Form::open(['url' => 'sendReply']),
+                Form::hidden('user-reply-id', $session),
+                Form::hidden('comment_id', $comment->id),
+                Form::hidden('page_id', $user->id),
+                Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']),
+                Form::submit('Send', ['class' => 'btn btn-primary']),
+                Form::close(),
+            ];
+        }
+
+        return view('profile', compact('user', 'comments', 'replies', 'session',
+            'formComment', 'formReply'));
     }
 
     public function updateInfo(Request $request)

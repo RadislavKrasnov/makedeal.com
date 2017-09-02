@@ -29,12 +29,13 @@ class DatabaseSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i = 1; $i <= 50; $i++) {
-            DB::table('photos')->insert([
-                'user_id' => $i,
-                'link' => $faker->url,
-            ]);
-        }
+//        for ($i = 1; $i <= 50; $i++) {
+//            DB::table('photos')->insert([
+//                'user_id' => $i,
+//                'link' => $faker->url,
+//                'link' => 'default-avatar.jpg',
+//            ]);
+//        }
 
         for ($i = 1; $i <= 50; $i++) {
             DB::table('comments')->insert([

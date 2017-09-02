@@ -13,6 +13,11 @@
     padding: 10px 0 10px 10px;
 }
 
+.avatar a img {
+    width: 150px;
+    height: 150px;
+}
+
 .dev-info div:last-child {
     float: left;
 }

@@ -11,20 +11,51 @@
 
 }
 
+.dev-info-profile {
+    width: 64%;
+    float: left;
+    padding-left: 10px;
+}
+
 .avatar-profile {
+    position: relative;
     float: left;
     width: 250px;
 }
 
-.avatar-profile a img {
+.avatar-profile img {
     width:100%;
+    height: 250px;
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
 }
 
-.dev-info-profile {
-    float: left;
-    padding-left: 10px;
-    width: 62%;
+.avatar-profile .middle {
+    transition: .5s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    height: 0;
+    background-color: #008CBA;
+}
 
+.avatar-profile:hover .middle {
+    height: 50%;
+}
+.avatar-profile .middle .text {
+    color: white;
+    white-space: nowrap;
+    font-size: 14px;
+    position: absolute;
+    overflow: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
 }
 
 .info-list {

@@ -23,4 +23,18 @@ class City extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public static function getCities($id)
+    {
+        $instancesCity = self::where('region_id', $id)
+            ->get();
+
+        $cities = [];
+
+        foreach ($instancesCity as $city) {
+            $cities[$city->id] = $city->name;
+        }
+
+        return $cities;
+    }
 }

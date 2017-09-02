@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Project;
+use App\Photo;
 use App\Technology;
 use App\Company;
 use App\City;
@@ -95,6 +96,11 @@ class User extends Authenticatable
     public function session()
     {
         return $this->hasOne('App\Session');
+    }
+
+    public function photo()
+    {
+        return $this->hasOne('App\Photo');
     }
 
 

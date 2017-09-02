@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Auth as Auth;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
+use App\Job;
+use App\Country;
+
 class RegisterController extends Controller
 {
     /*
@@ -68,11 +71,11 @@ class RegisterController extends Controller
             'username' => 'required|string|max:191|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'birthday' => 'string',
-            'experience' => 'string',
-            'jobs_id' => 'numeric',
-            'countries_id' => 'numeric',
-            'regions_id' => 'numeric',
-            'cities_id' => 'numeric',
+            'experience' => 'required|string',
+            'jobs_id' => 'required|numeric',
+            'country' => 'required|numeric',
+            'region' => 'required|numeric',
+            'city' => 'required|numeric',
             'email' => 'required|string|email|max:191|unique:users',
         ]);
     }
@@ -99,9 +102,9 @@ class RegisterController extends Controller
             'birthday' => $data['birthday'],
             'experience' => $data['experience'],
             'jobs_id' => intval($data['jobs_id']),
-            'countries_id' => intval($data['countries_id']),
-            'regions_id' => intval($data['regions_id']),
-            'cities_id' => intval($data['cities_id']),
+            'countries_id' => intval($data['country']),
+            'regions_id' => intval($data['region']),
+            'cities_id' => intval($data['city']),
             'email' => $data['email'],
         ]);
     }
@@ -117,5 +120,18 @@ class RegisterController extends Controller
         $id = Auth::id();
         return $this->registered($request, $user)
             ?: redirect()->route('profile', [$id]);
+    }
+
+    public function showRegistrationForm()
+    {
+        //Specializations
+        $jobs = Job::specializationsArray();
+        $jobsArray = json_decode(json_encode($jobs), true);
+
+        //countries
+        $countries = Country::getCountries();
+        $countriesArray = json_decode(json_encode($countries), true);
+
+        return view('auth.register', compact('jobsArray', 'countriesArray'));
     }
 }

@@ -27,5 +27,9 @@ class RemoveEmailFromContactsTable extends Migration
         Schema::table('contacts', function (Blueprint $table) {
             $table->string('email')->unique();
         });
+
+//        Schema::table('contacts', function (Blueprint $table) {
+//            $table->dropColumn('email');
+//        });
     }
 }

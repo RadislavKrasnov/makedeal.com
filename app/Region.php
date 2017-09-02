@@ -23,4 +23,18 @@ class Region extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public static function getRegions($id)
+    {
+        $instancesRegion = self::where('country_id', $id)
+            ->get();
+
+        $regions = [];
+
+        foreach ($instancesRegion as $region) {
+            $regions[$region->id] = $region->name;
+        }
+
+        return $regions;
+    }
 }

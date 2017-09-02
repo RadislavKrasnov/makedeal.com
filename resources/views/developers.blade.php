@@ -26,7 +26,8 @@
            @foreach($users as $user)
             <div class="developer clearfix">
                <div class="avatar">
-                   <a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>
+                   {{--<a href="https://placeholder.com"><img src="http://via.placeholder.com/150x150"></a>--}}
+                   <a href="{{ route('profile', ['id' => $user->id]) }}"><img src="/images/uploads/{{ $user->photo->link }}"></a>
                </div>
                <div class="dev-info">
                    <div class="header-developer">

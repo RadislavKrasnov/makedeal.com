@@ -19,6 +19,7 @@
 Route::get('/', 'UserController@index')->name('developers');
 Route::get('/user/{id}', 'UserController@profile')->name('profile');
 Route::put('/user-info', 'UserController@updateInfo');
+Route::post('/update-avatar', 'PhotoController@update')->name('updateAvatar');
 
 //TechnologyController
 Route::post('/removeTech', 'TechnologyController@removeTechnology')->name('removeTech');
@@ -40,6 +41,10 @@ Route::post('/company', 'CompanyController@addCompany');
 //ContactController
 Route::post('/add_contacts', 'ContactController@addContact');
 Route::post('/add_email', 'ContactController@addEmail');
+
+//RegionController
+Route::post('/regions', 'RegionController@selectRegions')->name('regions');
+Route::post('/cities', 'CityController@selectCities')->name('cities');
 
 
 

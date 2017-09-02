@@ -14,7 +14,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-                            <label for="first-name" class="col-md-4 control-label">First name</label>
+                            <label for="first-name" class="col-md-4 control-label">First name *</label>
 
                             <div class="col-md-6">
                                 <input id="first-name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" required autofocus>
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-                            <label for="last_name" class="col-md-4 control-label">Last name</label>
+                            <label for="last_name" class="col-md-4 control-label">Last name *</label>
 
                             <div class="col-md-6">
                                 <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" required autofocus>
@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('username') ? ' has-error' : '' }}">
-                            <label for="username" class="col-md-4 control-label">Username</label>
+                            <label for="username" class="col-md-4 control-label">Username *</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required autofocus>
@@ -70,7 +70,7 @@
                         {{--</div>--}}
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                            <label for="password" class="col-md-4 control-label">Password *</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control" name="password" required>
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+                            <label for="password-confirm" class="col-md-4 control-label">Confirm Password *</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -92,7 +92,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">Email</label>
+                            <label for="email" class="col-md-4 control-label">Email *</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="text" class="form-control" name="email" required>
@@ -115,7 +115,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="experience" class="col-md-4 control-label">Start career</label>
+                            <label for="experience" class="col-md-4 control-label">Start career *</label>
 
                             <div class="col-md-6">
                                 <input id="experience" type="text" class="form-control" name="experience"
@@ -124,36 +124,46 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="country" class="col-md-4 control-label">Country</label>
+                            {{--<label for="country" class="col-md-4 control-label">Country</label>--}}
+                            {!! Form::label('country', 'Country *', ['class' => 'col-md-4 control-label']) !!}
 
                             <div class="col-md-6">
-                                <input id="country" type="text" class="form-control" name="countries_id">
+                                {{--<input id="country" type="text" class="form-control" name="countries_id">--}}
+                                {!! Form::select('country', $countriesArray, null, ['class' => 'form-control']) !!}
+
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="region" class="col-md-4 control-label">Region</label>
+                            {{--<label for="region" class="col-md-4 control-label">Region</label>--}}
+                            {!! Form::label('region', 'Region *', ['class' => 'col-md-4 control-label']) !!}
 
                             <div class="col-md-6">
-                                <input id="region" type="text" class="form-control" name="regions_id">
+                                {{--<input id="region" type="text" class="form-control" name="regions_id">--}}
+                                {!! Form::select('region', ['def' => 'Select country first'], null, ['class' => 'form-control']) !!}
+
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="cities" class="col-md-4 control-label">City</label>
-
+                            {{--<label for="cities" class="col-md-4 control-label">City</label>--}}
+                            {!! Form::label('city', 'City *', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                <input id="cities" type="text" class="form-control" name="cities_id">
+                                {{--<input id="cities" type="text" class="form-control" name="cities_id">--}}
+                                {!! Form::select('city', ['def' => 'Select region first'], null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="jobs" class="col-md-4 control-label">Job</label>
-
+                                {{--<label for="jobs" class="col-md-4 control-label">Job</label>--}}
+                            {!! Form::label('jobs_id', 'Specialization *', ['class' => 'col-md-4 control-label']) !!}
                             <div class="col-md-6">
-                                <input id="jobs" type="text" class="form-control" name="jobs_id">
+                                {{--<input id="jobs" type="text" class="form-control" name="jobs_id">--}}
+                                {!! Form::select('jobs_id', $jobsArray, null, ['class' => 'form-control']) !!}
                             </div>
                         </div>
+
+
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
@@ -168,4 +178,7 @@
         {{--</div>--}}
     {{--</div>--}}
 {{--</div>--}}
+@endsection
+@section('register-js')
+<script src="{{ asset('js/dropdown-list.js') }}"></script>
 @endsection

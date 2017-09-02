@@ -23,4 +23,17 @@ class Country extends Model
     {
         return $this->hasMany('App\User');
     }
+
+    public function scopeGetCountries()
+    {
+        $instancesCountry = self::all();
+
+        $countries = [];
+
+        foreach ($instancesCountry as $country) {
+            $countries[$country->id] = $country->name;
+        }
+
+        return $countries;
+    }
 }

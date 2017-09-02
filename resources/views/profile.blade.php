@@ -10,9 +10,22 @@
             <a href="{{ route('developers') }}" class="btn btn-primary back">Back</a>
             <div class="developer-profile clearfix">
                 <div class="avatar-profile">
-                    <a href="https://placeholder.com">
-                        <img src="http://via.placeholder.com/250x250">
-                    </a>
+                    {{--<a href="{{ route('profile', ['id' => $user->id]) }}">--}}
+                        {{--<img src="http://via.placeholder.com/250x250">--}}
+                        {{--<img src="{{ asset('images/uploads/default-avatar.jpg') }}">--}}
+                        <img src="/images/uploads/{{ $user->photo->link }}">
+                    {{--</a>--}}
+                    @if($user->id == $session)
+                    <div class="middle">
+                        <div class="text">
+                            {!! Form::open(['url' => '/update-avatar', 'enctype'=> 'multipart/form-data']) !!}
+                            {!! Form::hidden('user_id', $user->id) !!}
+                            {!! Form::file('avatar') !!}
+                            {!! Form::submit('Upload', ['class' => 'btn btn-default']) !!}
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
+                    @endif
                 </div>
                 <div class="dev-info-profile">
                     <div class="header-developer-profile">
@@ -151,8 +164,8 @@
                     @if ($user->id == $session)
                     {!! Form::open(['url' => 'addTech']) !!}
                     {!! Form::hidden('user_id', $user->id) !!}
-                    {!! Form::select('techIds', $user->notAddedTechs(),
-                    ['class' => 'form-control'], ['class' => 'form-control']) !!}
+                    {!! Form::select('techIds', $user->notAddedTechs(), null,
+                    ['class' => 'form-control']) !!}
                     {!! Form::submit('Add', ['class' => 'btn btn-primary']) !!}
                     {!! Form::close() !!}
                     @endif
