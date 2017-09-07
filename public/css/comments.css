@@ -26,7 +26,7 @@
     word-wrap: break-word;
 }
 
-.send-comment form {
+.send-comment form, .panel-body > .collapse > .well form {
     width: 100%;
 }
 
@@ -38,10 +38,6 @@
     background-image: none;
     -webkit-background-image: none;
     background-color: #ffffff;
-}
-
-.panel-body > .collapse > .well form {
-    width: 100%;
 }
 
 /* Portrait tablets and medium desktops */

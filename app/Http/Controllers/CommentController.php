@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use App\Reply;
 use App\Project;
 use App\Technology;
@@ -44,9 +43,7 @@ class CommentController extends Controller
 
     public function sendReply(Request $request)
     {
-        $user = new User;
         $replies = new Reply;
-        $comment = new Comment;
 
         $replies->user_id = $request->input('user-reply-id');
         $replies->comment_id = $request->input('comment_id');

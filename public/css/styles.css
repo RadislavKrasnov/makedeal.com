@@ -7,8 +7,14 @@
 
 }
 
-.avatar {
+.avatar,
+.dev-info div:last-child,
+.dev-info div:last-child p,
+.dev-info {
     float: left;
+}
+
+.avatar {
     width: 160px;
     padding: 10px 0 10px 10px;
 }
@@ -18,17 +24,11 @@
     height: 150px;
 }
 
-.dev-info div:last-child {
-    float: left;
-}
-
 .dev-info div:last-child p {
-    float: left;
     padding-right: 5px;
 }
 
 .dev-info {
-    float: left;
     width: 75%;
     padding-left: 10px;
 }
