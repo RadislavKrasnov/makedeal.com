@@ -67,7 +67,15 @@ class Contacts extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('user_id', 'user_id'),
+            AdminFormElement::email('email', 'Email'),
+            AdminFormElement::link('github', 'GitHub'),
+            AdminFormElement::link('facebook', 'Facebook'),
+            AdminFormElement::text('skype', 'Skype'),
+            AdminFormElement::link('google_plus', 'Google_plus'),
+            AdminFormElement::text('phone', 'Phone'),
+        ]);
     }
 
     /**

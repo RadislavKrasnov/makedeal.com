@@ -63,7 +63,12 @@ class Admins extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('first_name', 'First Name')->required(),
+            AdminFormElement::text('last_name', 'Last Name')->required(),
+            AdminFormElement::email('email', 'Email')->required(),
+            AdminFormElement::text('job_title', 'Job')
+        ]);
     }
 
     /**

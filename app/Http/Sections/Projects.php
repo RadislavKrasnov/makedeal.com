@@ -63,7 +63,11 @@ class Projects extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('title', 'Title'),
+            AdminFormElement::text('description', 'Description'),
+            AdminFormElement::text('completed', 'Completed')
+        ]);
     }
 
     /**

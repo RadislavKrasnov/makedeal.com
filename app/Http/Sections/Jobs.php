@@ -59,7 +59,9 @@ class Jobs extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('title', 'Title')
+        ]);
     }
 
     /**

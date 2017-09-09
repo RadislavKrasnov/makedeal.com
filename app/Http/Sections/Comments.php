@@ -62,7 +62,11 @@ class Comments extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('user_id', 'User_id'),
+            AdminFormElement::text('title', 'Title'),
+            AdminFormElement::text('text', 'Text')
+        ]);
     }
 
     /**

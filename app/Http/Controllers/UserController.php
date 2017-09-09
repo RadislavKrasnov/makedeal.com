@@ -37,7 +37,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(5);
-        return view('developers', compact('users'));
+        foreach ($users as $user) {
+            $user->experience = $this->calculate_term($user->experience);
+        }
+        return view('developers', compact('users', 'user'));
     }
 
     private function calculate_term($birthday) {

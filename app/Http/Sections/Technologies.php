@@ -12,6 +12,8 @@ use AdminDisplay;
 use AdminColumn;
 use AdminForm;
 use AdminFormElement;
+use SleepingOwl\Admin\Contracts\Display\ColumnInterface as AdminColumnFilter;
+use AdminDisplayFilter;
 
 /**
  * Class Technologies
@@ -59,7 +61,9 @@ class Technologies extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('title', 'Title')
+        ]);
     }
 
     /**

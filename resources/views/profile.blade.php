@@ -83,12 +83,12 @@
                     <div class="collapse" id="collapseExample">
                         <div class="well">
                             <p>Email: {{ $user->email }}</p>
-                            <p>GitHub: {{ $user->github }}</p>
-                            <p>Skype: {{ $user->skype }}</p>
-                            <p>Google+: {{ $user->google_plus }}</p>
-                            <p>Facebook: {{ $user->facebook }}</p>
-                            <p>Phone: {{ $user->phone }}</p>
-                            <p>Portfolio: {{ $user->portfolio }}</p>
+                            <p>GitHub: {{ $user->contact->github }}</p>
+                            <p>Skype: {{ $user->contact->skype }}</p>
+                            <p>Google+: {{ $user->contact->google_plus }}</p>
+                            <p>Facebook: {{ $user->contact->facebook }}</p>
+                            <p>Phone: {{ $user->contact->phone }}</p>
+                            <p>Portfolio: {{ $user->contact->portfolio }}</p>
                         </div>
                     </div>
                     @else

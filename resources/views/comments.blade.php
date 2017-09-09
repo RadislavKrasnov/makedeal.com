@@ -110,7 +110,7 @@
                         <div class="col-md-2 col-sm-2 hidden-xs">
                             <figure class="thumbnail">
                                 {{--<img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />--}}
-                                <img class="img-responsive" src="/images/uploads/{{ $user->photo->link }}" />
+                                <img class="img-responsive" src="/images/uploads/{{ $comment->users->photo->link }}" />
                                 <figcaption class="text-center">{{ $comment->users->first_name }}</figcaption>
                             </figure>
                         </div>
@@ -125,7 +125,7 @@
                     <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
                         <figure class="thumbnail">
                             {{--<img class="img-responsive" src="http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg" />--}}
-                            <img class="img-responsive" src="/images/uploads/{{ $user->photo->link }}" />
+                            <img class="img-responsive" src="/images/uploads/{{ $reply->users->photo->link }}" />
                             <figcaption class="text-center">{{ $reply->users->first_name }}</figcaption>
                         </figure>
                     </div>

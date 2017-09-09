@@ -82,7 +82,17 @@ class Users extends Section
      */
     public function onEdit($id)
     {
-        // todo: remove if unused
+        return AdminForm::panel()->addBody([
+            AdminFormElement::text('first_name', 'First Name')->required(),
+            AdminFormElement::text('last_name', 'Last Name')->required(),
+            AdminFormElement::text('username', 'Username')->required(),
+            AdminFormElement::text('age', 'Age'),
+            AdminFormElement::text('experience', 'Experience')->required(),
+            AdminFormElement::text('job_id', 'job_id'),
+            AdminFormElement::text('countries_id', 'countries_id')->required(),
+            AdminFormElement::text('regions_id', 'regions_id')->required(),
+            AdminFormElement::text('cities_id', 'cities_id')->required()
+        ]);
     }
 
     /**
