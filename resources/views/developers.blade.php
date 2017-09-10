@@ -49,11 +49,7 @@
                        {{--@endforeach--}}
                        <p>City: {{ $cit->name }}</p>
                        @endforeach
-                       @if ($user->experience !== 0)
-                       <p>expereince: {{ $user->experience }} years</p>
-                       @else
-                       <p>expereince: less 1 years</p>
-                       @endif
+                       <p>expereince: {{ $user->experience }}</p>
                    </div>
                    <div>
                        <p>Technology:</p>

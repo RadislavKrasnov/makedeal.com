@@ -36,11 +36,12 @@
                         @foreach($user->specialization() as $specialization)
                         <p>Scpecialization: {{ $specialization->title }}</p>
                         @endforeach
-                        @if ($user->experience !== 0)
-                            <p>expereince: {{ $user->experience }} years</p>
-                        @else
-                            <p>expereince: less 1 years</p>
-                        @endif
+                        {{--@if ($user->experience !== 0)--}}
+                            {{--<p>expereince: {{ $user->experience }} years</p>--}}
+                        {{--@else--}}
+                            {{--<p>expereince: less 1 years</p>--}}
+                        {{--@endif--}}
+                        <p>expereince: {{ $user->experience }}</p>
                         <p>Age: {{ $user->birthday }}</p>
                     </div>
                     @else
@@ -48,11 +49,7 @@
                             @foreach($user->specialization() as $specialization)
                                 <p>Scpecialization: {{ $specialization->title }}</p>
                             @endforeach
-                            @if ($user->experience !== 0)
-                                <p>expereince: {{ $user->experience }} year(s)</p>
-                            @else
-                                <p>expereince: less 1 year</p>
-                            @endif
+                            <p>expereince: {{ $user->experience }}</p>
                             <p>Age: {{ $user->birthday }}</p>
                             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#editInfo" aria-expanded="false" aria-controls="collapseExample">
                                 Edit

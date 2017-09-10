@@ -10,9 +10,12 @@
                 {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '5']) !!}--}}
                 {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
                 {{--{!! Form::close(['url' => '#']) !!}--}}
-@foreach($formComment as $form)
-                {!! $form !!}
-@endforeach
+{{--@foreach($formComment as $form)--}}
+                {{--{!! $form !!}--}}
+{{--@endforeach--}}
+                @foreach($formComment[0] as $form)
+                    {!! $form !!}
+                @endforeach
             </section>
 
         @if ($comments->count())
@@ -57,7 +60,10 @@
                                         {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}--}}
                                         {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
                                         {{--{!! Form::close(['url' => '#']) !!}--}}
-                                        @foreach($formReply as $form)
+                                        {{--@foreach($formReply as $form)--}}
+                                            {{--{!! $form !!}--}}
+                                        {{--@endforeach--}}
+                                        @foreach($formComment[1] as $form)
                                             {!! $form !!}
                                         @endforeach
                                     </div>
@@ -99,7 +105,10 @@
                                             {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}--}}
                                             {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
                                             {{--{!! Form::close(['url' => '#']) !!}--}}
-                                            @foreach($formReply as $form)
+                                            {{--@foreach($formReply as $form)--}}
+                                                {{--{!! $form !!}--}}
+                                            {{--@endforeach--}}
+                                            @foreach($formComment[1] as $form)
                                                 {!! $form !!}
                                             @endforeach
                                         </div>
@@ -162,7 +171,10 @@
                                         {{--{!! Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']) !!}--}}
                                         {{--{!! Form::submit('Send', ['class' => 'btn btn-primary']) !!}--}}
                                         {{--{!! Form::close() !!}--}}
-                                        @foreach($formReply as $form)
+                                        {{--@foreach($formReply as $form)--}}
+                                            {{--{!! $form !!}--}}
+                                        {{--@endforeach--}}
+                                        @foreach($formComment[1] as $form)
                                             {!! $form !!}
                                         @endforeach
                                     </div>

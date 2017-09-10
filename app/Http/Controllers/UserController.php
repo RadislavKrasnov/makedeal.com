@@ -38,9 +38,18 @@ class UserController extends Controller
     {
         $users = User::paginate(5);
         foreach ($users as $user) {
-            $user->experience = $this->calculate_term($user->experience);
+              $this->experience($user);
         }
         return view('developers', compact('users', 'user'));
+    }
+
+    private function experience($user)
+    {
+        $user->experience = $this->calculate_term($user->experience) . ' years';
+        if ($user->experience < 1) {
+            $user->experience = 'less 1 year';
+        }
+        return;
     }
 
     private function calculate_term($birthday) {
@@ -58,11 +67,11 @@ class UserController extends Controller
         $session = session('user_id');
         $user = User::find($id);
         $user->birthday = $this->calculate_term($user->birthday);
-        $user->experience = $this->calculate_term($user->experience);
+        $this->experience($user);
         $comments = Comment::where('page_id', '=', $id)->get();
         $replies = Reply::where('page_id', '=', $id)->get();
 
-        $formComment = [
+       /* $formComment = [
                 Form::open(['url' => 'sendComment']),
                 Form::hidden('user_id', $session),
                 Form::hidden('page_id', $user->id),
@@ -80,6 +89,28 @@ class UserController extends Controller
                 Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']),
                 Form::submit('Send', ['class' => 'btn btn-primary']),
                 Form::close(),
+            ];
+        }*/
+        foreach ($comments as $comment) {
+            $formComment = [
+                [
+                    Form::open(['url' => 'sendComment']),
+                    Form::hidden('user_id', $session),
+                    Form::hidden('page_id', $user->id),
+                    Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '5']),
+                    Form::submit('Send', ['class' => 'btn btn-primary']),
+                    Form::close(),
+                ],
+                [
+                    Form::open(['url' => 'sendReply']),
+                    Form::hidden('user-reply-id', $session),
+                    Form::hidden('comment_id', $comment->id),
+                    Form::hidden('page_id', $user->id),
+                    Form::textarea('comment-text', null, ['class' => 'form-control', 'rows' => '3']),
+                    Form::submit('Send', ['class' => 'btn btn-primary']),
+                    Form::close(),
+                ]
+
             ];
         }
 
